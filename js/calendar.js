@@ -24,11 +24,46 @@ function Calendar(stringDate) {
         var cell = document.createElement("th");
         cell.setAttribute("colspan", "7");
         cell.appendChild(document.createTextNode(monthNames[this.month()] + " " + this.year()));
+        trow.setAttribute("class", "bg-success");
         trow.appendChild(cell);
         thead.appendChild(trow);
         table.appendChild(thead);
     }
-    
+
+
+    this.printDays = function(table, qtyDays) {
+        var tbody = document.createElement("tbody");
+
+        var actualMonth = this.month();
+        while(actualMonth == this.month() && qtyDays > 0) {
+
+            var dayTrack = 0; //0 = sunday, 1 = monday, 2 = tuesday...
+            var trow = document.createElement("tr");
+            while(dayTrack < 7) {
+                var cell = document.createElement("td");
+                var color = "none";
+                if(dayTrack != this.day() || qtyDays == 0 || actualMonth != this.month()) {
+                    cell.appendChild(document.createTextNode(" "));
+                    color = "gray-background";
+                }
+                else {
+                    cell.appendChild(document.createTextNode(this.date()));
+                    if(this.day() == 0 || this.day() == 6)
+                        color = "yellow-background";
+                    else
+                        color = "green-background";
+                    this.addDate();
+                    qtyDays--;
+                }
+                cell.setAttribute("class", color);
+                trow.appendChild(cell);
+                dayTrack++;
+            }
+            tbody.appendChild(trow);
+        }
+        table.appendChild(tbody);
+        return qtyDays;
+    }
 
 
 }

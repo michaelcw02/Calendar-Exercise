@@ -3,3 +3,12 @@ th, td {
     width: 30px;
     text-align: center;
 }
+.gray-background {
+    background-color: gray;
+}
+.green-background {
+    background-color: lightgreen;
+}
+.yellow-background {
+    background-color: yellow;
+}

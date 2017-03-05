@@ -4,14 +4,7 @@ function submitForm() {
     var qtyDays = document.getElementById("qtyDays").value;
     var ctryCode = document.getElementById("ctryCode").value;
 
-    console.log(stringDate, qtyDays, ctryCode); //TESTING PURPOSES..
-
     startDate = new Calendar(stringDate);
-
-    //MORE TESTING
-    console.log(startDate.year(), startDate.month(), startDate.date(), startDate.day());
-    startDate.addDate();
-    console.log(startDate.year(), startDate.month(), startDate.date(), startDate.day());
 
     printCalendar(startDate, qtyDays);
 
@@ -20,15 +13,23 @@ function submitForm() {
 function printCalendar(startDate, qtyDays) {
 
     var mainDiv = document.getElementById("calendar");
+    clearDiv(mainDiv);
     
-    var row = newRow();
-    var col = newCol2();
-    var table = newTable();
-
-    startDate.printHeader(table);
-    col.append(table);
-    row.append(col);
-    mainDiv.appendChild(row);
+    while(qtyDays > 0) {
+        var row = newRow();
+        var i = 0;
+        while(i < 6 && qtyDays > 0) {
+            var col = newCol2();
+            var table = newTable();
+            startDate.printHeader(table);
+            qtyDays = startDate.printDays(table, qtyDays);
+            col.append(table);
+            row.append(col);
+            i++;
+        }
+        mainDiv.appendChild(row);
+        mainDiv.appendChild(document.createElement("br"));
+    }
 
 }
 
@@ -46,4 +47,7 @@ function newTable() {
     var table = document.createElement("table");
     table.setAttribute("class", "table-bordered");
     return table;
+}
+function clearDiv(div) {
+    div.innerHTML = " ";
 }
