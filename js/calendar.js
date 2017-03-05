@@ -11,5 +11,21 @@ function Calendar(stringDate) {
     this.addDate = function() { actualDate.setDate( actualDate.getDate() + 1 ); }
 
 
+    this.printHeader = function(table) {
+
+        var thead = document.createElement("thead");
+        var trow = document.createElement("tr");
+        for(i = 0; i < 7; i++) {
+            var cell = document.createElement("th");
+            cell.appendChild(document.createTextNode(daysNames[i]));
+            
+        }
+
+    }
+
 
 }
+
+var monthNames = ["January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"];
+var daysNames = ["S", "M", "T", "W", "T", "F", "S"];
