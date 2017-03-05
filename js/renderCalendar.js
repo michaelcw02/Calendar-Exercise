@@ -13,11 +13,11 @@ function submitForm() {
     startDate.addDate();
     console.log(startDate.year(), startDate.month(), startDate.date(), startDate.day());
 
-
+    printCalendar(startDate, qtyDays);
 
 }
 
-function printCalendar(qtyDays) {
+function printCalendar(startDate, qtyDays) {
 
     var mainDiv = document.getElementById("calendar");
     
@@ -25,7 +25,10 @@ function printCalendar(qtyDays) {
     var col = newCol2();
     var table = newTable();
 
-
+    startDate.printHeader(table);
+    col.append(table);
+    row.append(col);
+    mainDiv.appendChild(row);
 
 }
 
