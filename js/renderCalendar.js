@@ -4,10 +4,13 @@ function submitForm() {
     var qtyDays = document.getElementById("qtyDays").value;
     var ctryCode = document.getElementById("ctryCode").value;
 
-    startDate = new Calendar(stringDate);
-
-    printCalendar(startDate, qtyDays);
-
+    if(Date.parse(stringDate)) {
+        startDate = new Calendar(stringDate);
+        printCalendar(startDate, qtyDays);
+    } 
+    else {
+        alert("You must enter a date");
+    }
 }
 
 function printCalendar(startDate, qtyDays) {

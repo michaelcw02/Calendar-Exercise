@@ -36,7 +36,7 @@ function Calendar(stringDate) {
 
         var actualMonth = this.month();
         while(actualMonth == this.month() && qtyDays > 0) {
-
+            
             var dayTrack = 0; //0 = sunday, 1 = monday, 2 = tuesday...
             var trow = document.createElement("tr");
             while(dayTrack < 7) {
