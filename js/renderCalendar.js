@@ -26,8 +26,8 @@ function printCalendar(startDate, qtyDays) {
             var table = newTable();
             startDate.printHeader(table);
             qtyDays = startDate.printDays(table, qtyDays);
-            col.append(table);
-            row.append(col);
+            col.appendChild(table);
+            row.appendChild(col);
             i++;
         }
         mainDiv.appendChild(row);
