@@ -59,11 +59,15 @@ function getHolidays(date = new Date()) {
     let country = document.getElementById('ctryCode').value;
     let year = date.getFullYear();
     let xhr = new XMLHttpRequest();
-//  xhr.open('GET', 'http://ipinfo.io/json', true);
+    var array;
     xhr.open('GET', '/holiday/' + country + '/' + year + '/', true);
     xhr.send();
     xhr.addEventListener('readystatechange', (event) => {
-        if(xhr.readyState == 4)
-            console.log(xhr.responseText);
+        if(xhr.readyState === 4 && xhr.status === 200)
+            array = xhr.responseText;
     }, true);
+   
+    console.log(typeof array);
+    console.log(array);
 }   
+
