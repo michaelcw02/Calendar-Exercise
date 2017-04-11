@@ -60,7 +60,7 @@ function getHolidays(date = new Date()) {
     let year = date.getFullYear();
     let xhr = new XMLHttpRequest();
 //  xhr.open('GET', 'http://ipinfo.io/json', true);
-    xhr.open('GET', '/holiday/' + country + '/' + year, true);
+    xhr.open('GET', '/holiday/' + country + '/' + year + '/', true);
     xhr.send();
     xhr.addEventListener('readystatechange', (event) => {
         if(xhr.readyState == 4)
