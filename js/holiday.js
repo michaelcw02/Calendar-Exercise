@@ -14,6 +14,16 @@ function listening() {
 
 app.use( express.static( __dirname + '/..' ));
 
+app.get( '/holiday/:country/:year', getHoliday );
+
+function getHoliday(request, response) {
+    let data = request.params;
+    let country = data.country;
+    let year = data.year;
+    response.send(year + ', ' + country);
+}
+
+
 /*
 var port = 12233;
 var pageURL = "https://holidayapi.com/v1/holidays?key=ea131354-c913-4ed4-8bb5-4673250727c2";
