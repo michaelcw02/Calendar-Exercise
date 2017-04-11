@@ -35,12 +35,11 @@ function getHoliday(request, response) {
     let data = request.params;
     addDataToParameters(data);
     hapi.holidays(parameters, (error, data) => {
-        if (error) {
-            response.send('there was an error!');
-        }
-        if (data) {
+        if (error)
+            response.send(error);
+        if ('object' === typeof data) {
             console.log(data);
-            response.send(data);
+            response.send(JSON.stringify(data));
         }
     })
 }

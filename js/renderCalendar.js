@@ -4,10 +4,10 @@ function submitForm() {
     var qtyDays = document.getElementById("qtyDays").value;
     var ctryCode = document.getElementById("ctryCode").value;
 
-    if(Date.parse(stringDate)) {
+    if (Date.parse(stringDate)) {
         startDate = new Calendar(stringDate);
         printCalendar(startDate, qtyDays);
-    } 
+    }
     else {
         alert("You must enter a date");
     }
@@ -18,10 +18,10 @@ function printCalendar(startDate, qtyDays) {
     var mainDiv = document.getElementById("calendar");
     clearDiv(mainDiv);
     getHolidays();
-    while(qtyDays > 0) {
+    while (qtyDays > 0) {
         var row = newRow();
         var i = 0;
-        while(i < 6 && qtyDays > 0) {
+        while (i < 6 && qtyDays > 0) {
             var col = newCol2();
             var table = newTable();
             startDate.printHeader(table);
@@ -59,15 +59,14 @@ function getHolidays(date = new Date()) {
     let country = document.getElementById('ctryCode').value;
     let year = date.getFullYear();
     let xhr = new XMLHttpRequest();
-    var array;
+    let response;
     xhr.open('GET', '/holiday/' + country + '/' + year + '/', true);
     xhr.send();
     xhr.addEventListener('readystatechange', (event) => {
-        if(xhr.readyState === 4 && xhr.status === 200)
-            array = xhr.responseText;
+        if (xhr.readyState == 4) {
+            response = JSON.parse(xhr.responseText);
+            console.log(response);
+        }
     }, true);
-   
-    console.log(typeof array);
-    console.log(array);
-}   
+}
 
