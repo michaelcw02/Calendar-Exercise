@@ -60,10 +60,10 @@ function getHolidays(date = new Date()) {
     let year = date.getFullYear();
     let xhr = new XMLHttpRequest();
 //  xhr.open('GET', 'http://ipinfo.io/json', true);
-    xhr.open('GET', 'http://cors.io/?http://127.0.0.1:12233', true);
+    xhr.open('GET', 'http://127.0.0.1:12233/holiday', true);
     xhr.send();
     xhr.addEventListener('readystatechange', (event) => {
         if(xhr.readyState == 4)
-            console.log(xhr.responseText);
+            console.log(xhr.response);
     }, true);
-}
+}   
