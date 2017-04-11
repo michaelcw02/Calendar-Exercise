@@ -64,6 +64,6 @@ function getHolidays(date = new Date()) {
     xhr.send();
     xhr.addEventListener('readystatechange', (event) => {
         if(xhr.readyState == 4)
-            alert(xhr.responseText);
+            console.log(xhr.responseText);
     }, true);
 }   
