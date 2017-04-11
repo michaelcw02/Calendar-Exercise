@@ -1,7 +1,8 @@
 const express = require('express');
 var HolidayAPI = require('node-holidayapi');
 
-var key = 'ea131354-c913-4ed4-8bb5-4673250727c2';
+var key = 'ea131354-c913-4ed4-8bb5-4673250727c2';   //TEST API KEY
+//var key = 'e3b4a9ba-697c-4bfa-a3b6-d0c499f3da02';   //LIVE API KEY
 var parameters = {
     // Required
     'country': 'US',
@@ -29,7 +30,7 @@ function listening() {
 
 app.use(express.static(__dirname));
 
-app.get('/holiday/:country/:year/:month?/:day?/:previous?/:upcoming?/:public?/:pretty?', getHoliday);
+app.get('/holiday/:country/:date/:previous?/:upcoming?/:public?/:pretty?', getHoliday);
 
 function getHoliday(request, response) {
     let data = request.params;
@@ -47,18 +48,16 @@ function getHoliday(request, response) {
 function addDataToParameters(data) {
     if (data.country)
         parameters['country'] = data.country;
-    if (data.year)
-        parameters['year'] = data.year;
-    if (data.month)
-        parameters['month'] = data.month;
-    if (data.day)
-        parameters['day'] = data.day;
-    if (data.previous)
+    let date = new Date(data.date);
+    if(date)
+        parameters['year'] = date.getFullYear();
+    //ALL THESE ARE NOT NEEDED FOR THIS EXERCISE
+    /*
+        parameters['month'] = date.getMonth() + 1;
+        parameters['day'] = date.getDate();
         parameters['previous'] = data.previous;
-    if (data.upcoming)
         parameters['upcoming'] = data.upcoming;
-    if (data.public)
         parameters['public'] = data.public;
-    if (data.pretty)
         parameters['pretty'] = data.pretty;
+    */
 }

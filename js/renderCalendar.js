@@ -17,7 +17,6 @@ function printCalendar(startDate, qtyDays) {
 
     var mainDiv = document.getElementById("calendar");
     clearDiv(mainDiv);
-    getHolidays();
     while (qtyDays > 0) {
         var row = newRow();
         var i = 0;
@@ -54,19 +53,3 @@ function newTable() {
 function clearDiv(div) {
     div.innerHTML = " ";
 }
-
-function getHolidays(date = new Date()) {
-    let country = document.getElementById('ctryCode').value;
-    let year = date.getFullYear();
-    let xhr = new XMLHttpRequest();
-    let response;
-    xhr.open('GET', '/holiday/' + country + '/' + year + '/', true);
-    xhr.send();
-    xhr.addEventListener('readystatechange', (event) => {
-        if (xhr.readyState == 4) {
-            response = JSON.parse(xhr.responseText);
-            console.log(response);
-        }
-    }, true);
-}
-
