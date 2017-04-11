@@ -27,7 +27,7 @@ function listening() {
     console.log("listening on port 3000");
 }
 
-app.use( express.static( __dirname + '/..' ));
+app.use( express.static( __dirname ));
 
 app.get( '/holiday/:country/:year/:month?/:day?/:previous?/:upcoming?/:public?/:pretty?', getHoliday );
 
@@ -44,7 +44,7 @@ function getHoliday(request, response) {
     })
 }
 
-function addParamsToObject(data) {
+function addDataToParameters(data) {
     parameters[country] = data.country;
     parameters[year] = data.year;
     parameters[month] = data.month;

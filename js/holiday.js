@@ -2,27 +2,6 @@
 const http = require("http");
 const fs = require('fs');
 const net = require('net');
-const express = require('express');
-
-var app = express();
-
-var server = app.listen(3000, listening);
-
-function listening() {
-    console.log("listening on port 3000");
-}
-
-app.use( express.static( __dirname + '/..' ));
-
-app.get( '/holiday/:country/:year', getHoliday );
-
-function getHoliday(request, response) {
-    let data = request.params;
-    let country = data.country;
-    let year = data.year;
-    response.send(year + ', ' + country);
-}
-
 
 /*
 var port = 12233;
