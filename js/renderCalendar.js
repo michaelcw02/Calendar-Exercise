@@ -6,6 +6,7 @@ function submitForm() {
 
     if (Date.parse(stringDate)) {
         startDate = new Calendar(stringDate);
+        startDate.getHoli();
         printCalendar(startDate, qtyDays);
     }
     else {
