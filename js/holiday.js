@@ -28,12 +28,23 @@ Holiday.prototype.getHolidays = function () {
         let dateFormat = /\d{4}-\d{2}-\d{2}/;
         let objectFormat = /^\d$/
 
-        this.prototype.holidays = response.holidays;
+        Holiday.prototype.holidays = response.holidays;
+        console.log('ok');
     }
 }
 
+Holiday.prototype.getActualYear = function() {
+    let date = Date.parse(this.date);
+    date = new Date(date);
+    return date.getFullYear();
+}
 
-
-
-
-    
+Holiday.prototype.isHoliday = function(date) {
+    let dateFormat = /\d{4}-\d{2}-\d{2}/;
+    let keys = Object.keys(this.holidays);
+    if(dateFormat.test(date)) {
+        if(keys[date])
+            return true;
+    }
+    return false;
+}

@@ -2,7 +2,7 @@
 function Calendar(stringDate) {
     var arrayDate = stringDate.split("-");
     var actualDate = new Date(arrayDate[0], arrayDate[1]-1, arrayDate[2], 0, 0, 0, 0);
-
+    this.holi = undefined;
     this.year = function() { return actualDate.getFullYear(); } //RETURNS THE YEAR NUMBER
     this.month = function() { return actualDate.getMonth(); }   //RETURNS THE MONTH NUMBER, IT STARTS WITH 0..
     this.date = function() { return actualDate.getDate(); }     //RETURNS THE DATE NUMBER, 1 - 31;
@@ -33,7 +33,6 @@ function Calendar(stringDate) {
 
     this.printDays = function(table, qtyDays) {
         var tbody = document.createElement("tbody");
-        this.getHoli();
         var actualMonth = this.month();
         while(actualMonth == this.month() && qtyDays > 0) {
             
@@ -71,8 +70,12 @@ function Calendar(stringDate) {
     this.getHoli = function() {
         let country = document.getElementById('ctryCode').value;
         let date = this.formatDate()
-        let holi = new Holiday(country, date);
-        holi.getHolidays();
+        if(this.holi !== undefined) {
+            if(this.holi.getActualYear() != this.year())
+                this.holi = new Holiday(country, date)
+        } else 
+            this.holi = new Holiday(country, date)
+        this.holi.getHolidays();
     }
 }
 
