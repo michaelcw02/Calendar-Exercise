@@ -54,3 +54,9 @@ function newTable() {
 function clearDiv(div) {
     div.innerHTML = " ";
 }
+
+function getHolidays(date = new Date()) {
+    let country = document.getElementById('ctryCode').value;
+    let year = date.getFullYear();
+    
+}
