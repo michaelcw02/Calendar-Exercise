@@ -5,7 +5,7 @@
 ####   -Couldn't add the rollover label on Holidays.
 ####   -The country code should be verified.
 
-### b. Bugs you’ve identified but didn’t have time to fix.
+### b. Bugs I've identified but didn’t have time to fix.
 ####   -When the number of days is high, it takes some time to render the calendars.
 ####   -The collapse effect could be better.
 
